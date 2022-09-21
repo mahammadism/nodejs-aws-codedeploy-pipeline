@@ -1,25 +1,25 @@
 const express = require('express');
 const app = express();
-const hostname = '127.0.0.1'; // Your server ip address
 const port = 3000;
 
-const version = '2,999,999';
-
 app.get('/', (req, res) => {
-    // set response content    
-        res.send(`<html>
-                    <body>
-                        <h1 style="color:blue;text-align: center;margin-top: 100px;"> [Version ${version}]: THis is AMAZING!!! Like & Subscribe!</h1>
-                        <div style="position: fixed;top: 50%;left: 50%;transform: translate(-50%, -50%)">
-                            <img src="https://picsum.photos/400/400?random=1">
-                        </div>
-                    </body>
-                   </html>`);
+  res.send('<h1>Express Demo App</h1> <h4>Message: Success</h4> <p>Version 1.1</p>');
+})
+
+app.get('/products', (req, res) => {
+  res.send([
+    {
+      productId: '101',
+      price: 100
+    },
+    {
+      productId: '102',
+      price: 150
+    }
+  ])
+})
+
+app.listen(port, ()=> {
+  console.log(`Demo app is up and listening to port: ${port}`);
+})
  
-  console.log(`[Version ${version}]: New request => http://${hostname}:${port}`+req.url);
-
-})
-
-app.listen(port, () => {
-    console.log(`[Version ${version}]: Server running at http://${hostname}:${port}/`);
-})
